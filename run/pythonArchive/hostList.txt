@@ -1,0 +1,16 @@
+ec2353 12  HP Z800 Workstation 
+ec2157 8  HP Z420 Workstation 
+ec2188 8  HP Z420 Workstation 
+ec2198 8  HP Z420 Workstation 
+ec2364 12  HP Z800 Workstation 
+ec2393 12  HP Z800 Workstation 
+ec2535 12  HP Z800 Workstation 
+ec2583 24  HP Z800 Workstation 
+ec2269 8  HP Z420 Workstation 
+ec2582 24  HP Z800 Workstation 
+ec2591 12  HP Z800 Workstation 
+ec2310 8  HP Z420 Workstation 
+ec2344 32  HP Z820 Workstation 
+ec2514 8  HP Z420 Workstation 
+ec2656 12  HP Z800 Workstation 
+ec2497 32  HP Z820 Workstation 

@@ -1,0 +1,44 @@
+################################################################################
+#                                  UNCLASSIFIED                                #
+################################################################################
+#
+# in003.inp
+#
+# Overview:
+#  Edit this file as appropriate.
+#
+#  Target weave.
+#
+################################################################################
+
+ap.tau=0.100
+
+ex.tgo=60.5
+
+#fcRdr.rinAng=400e-6
+
+fcTseO.procNoise=5.0e-7
+
+#gdn.datalinkStep=0.0156
+gdn.gdnLawSelInt=2
+#gdn.useTruth=true
+
+msl.initVxb=360.0
+#msl.launchTime=32.7
+#msl.launchTime=20
+msl.launchTime=46.6
+
+mslTse6.singerTau=0.5
+mslTse6.singerVar=75.0
+
+tgt.weaveEnd=999.0e9
+tgt.weaveStart=0.0
+
+ex.outputRate=10
+ex.printAll=true
+#ex.runs=3
+#ex.runs=100
+
+################################################################################
+#                                  UNCLASSIFIED                                #
+################################################################################

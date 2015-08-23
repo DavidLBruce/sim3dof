@@ -1,0 +1,57 @@
+peet help
+
+The sim is called from the command line and uses the following syntax
+
+ > peet arg1=val1 arg2=val2 arg3=val3 ...
+
+where arg* is one of the following:
+-----------------+--------------------------------------+-----------+-------------
+   string        |             description              |   units   | value 
+-----------------+--------------------------------------+-----------+-------------
+>Simulation Executive Parameters
+-----------------+--------------------------------------+-----------+-------------
+dt               | simulation time step                 |     s     | 0.001 
+file             | Take inputs from file                |  boolean  | 
+fileWtub         | Output filename header               |   string  | peet 
+help             | Print input variables, units, default|    na     | 
+maxTtime         | Maximum simulation time              |     s     | 40 
+outputRate      | Simulation variable output rate      |     Hz    | -1 
+printAll        | Print all Monte Carlo misses         |  boolean  | true 
+runs             | runs per Monte Carlo set             |     1     | 1 
+start            | First Monte Carlo run                |     1     | 0 
+tgo              | Intercept time from sim start        |    sec    | 20 
+-----------------+--------------------------------------+-----------+-------------
+>Target Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+tgt.frameTimeStep| Target frame time step               |   sec     | 9.99e+11 
+tgt.frameStartTime| Target frame start time             |   sec     | 9.99e+11 
+tgt.weaveStart   | Target weave start time              |   sec     | 0 
+tgt.weaveEnd     | Target weave end time                |   sec     | 9.99e+11 
+tgt.weaveAmpl    | Target weave amplitude               |   gees    | 392.4 
+tgt.weavePeriod  | Target weave period                  |   sec     | 10 
+-----------------+--------------------------------------+-----------+-------------
+>Fire Control Radar Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+fcRdr.frameTimeStep| Fire Control radar frame time step |   sec     | 0.0166667 
+fcRdr.frameStartTime| Fire Control radar frame start time|   sec    | 0 
+fcRdr.rinPosY    | Range independent position noise     |   m       | 6.86151e-315 
+-----------------+--------------------------------------+-----------+-------------
+>Fire Control TSE Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+fcTse.frameTimeStep| Fire Control TSE frame time step   |   sec     | 0.0166667 
+fcTse.frameStartTime| Fire Control TSE frame start time |   sec     | 0 
+fcTse.procNoise  | Fire Control TSE process noise       |   sec     | 0.0001 
+-----------------+--------------------------------------+-----------+-------------
+>Fire Control TSE6 Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+fcTse6.frameTimeStep| Fire Control TSE frame time step  |   sec     | 0.0166667 
+fcTse6.singerTau| Fire Control TSE tuning parameter     |   sec     | 100 
+fcTse6.singerVar| Fire Control TSE tuning parameter     |   sec     | 100 
+-----------------+--------------------------------------+-----------+-------------
+
+Output is a single line of miss statistics:
+<# of runs> <min miss(m)> <max miss(m)> <mean miss(m)> <mean missX(m)> <mean missY(m)> <rms miss(m)> <std missX(m)> <std missY(m)> <# of flyers> <cep> <Pguide10 < 10cm> <Pguide10 < 20cm> <Pguide10 < 30cm> <Pguide < requiredMiss>
+
+If print_all=true for each run the following ia also printed to stdout.
+<run> <deltaV(m/s)> <miss(m)> <missX(m)> <missY(m)> <tof(s)>
+
