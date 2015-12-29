@@ -7,13 +7,13 @@
 #
 ################################################################################
 
-TOPDIR := ..
+TOPDIR := ../..
 
 LIBDIR := $(TOPDIR)/lib
 
 TGTLIB := $(LIBDIR)/libMatrix.a
 
-SRCDIR := $(TOPDIR)/src
+SRCDIR := $(TOPDIR)/Matrix/src
 
 INCL := -I$(SRCDIR)
 
