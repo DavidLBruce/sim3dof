@@ -45,12 +45,15 @@ INC = -I$(INC1) -I$(INC2)
 
 FLAGS = -c -g 
 
-LIBS := $(TOPDIR)/lib/libMatrix.a
+LIBDIRS := \
+-L$(TOPDIR)/lib
+
+LIBS := -lMatrix
 
 all :	tgtExe
 
 tgtExe : $(OBJ)
-	g++ -g -o $(EXEPATH) $(OBJ) $(LIBS) -lm
+	g++ -g -o $(EXEPATH) $(OBJ) $(LIBDIRS) $(LIBS) -lm
 
 $(OBJ1) :	%.o: $(SRCDIR1)/%.cpp
 	g++ $(FLAGS) $(INC) $< -o $@
@@ -68,7 +71,7 @@ $(OBJ1) :	%.o: $(SRCDIR1)/%.cpp
 include $(OBJ:.o=.d)
 
 clean :
-	rm -f *.o *.d  $(EXEPATH) $(RUNDIR)/core
+	rm -f *.o *.d  $(EXEPATH) $(TOPDIR)/lib/* $(RUNDIR)/core
 
 
 ################################################################################

@@ -21,5 +21,3 @@ clean :
     test=$$? ; \
 		if [ $$test != 0 ] ; then exit $$test ; fi \
 	done
-
-
