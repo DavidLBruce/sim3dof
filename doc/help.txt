@@ -10,48 +10,92 @@ where arg* is one of the following:
 -----------------+--------------------------------------+-----------+-------------
 >Simulation Executive Parameters
 -----------------+--------------------------------------+-----------+-------------
-dt               | simulation time step                 |     s     | 0.001 
-file             | Take inputs from file                |  boolean  | 
-fileWtub         | Output filename header               |   string  | peet 
+ex.dt            | simulation time step                 |    sec    | 0.001 
+ex.file          | Take inputs from file                |  boolean  | 
+ex.fileWtub      | Output filename header               |   string  | p3dof 
+ex.flyerThld     | Flyer miss distance threshold        |     m     | 10 
 help             | Print input variables, units, default|    na     | 
-maxTtime         | Maximum simulation time              |     s     | 40 
-outputRate      | Simulation variable output rate      |     Hz    | -1 
-printAll        | Print all Monte Carlo misses         |  boolean  | true 
-runs             | runs per Monte Carlo set             |     1     | 1 
-start            | First Monte Carlo run                |     1     | 0 
-tgo              | Intercept time from sim start        |    sec    | 20 
+ex.maxTtime      | Maximum simulation time              |    sec    | 100 
+ex.outputRate    | Simulation variable output rate      |     Hz    | -1 
+ex.pHitThld      | Miss threshold for pHit calculation  |     m     | 1 
+ex.printAll      | Print all Monte Carlo misses         |  boolean  | false 
+ex.runs          | runs per Monte Carlo set             |     1     | 1 
+ex.runStart      | First Monte Carlo run (1st run = 1)  |     1     | 1 
+ex.tgo           | Intercept time from sim start        |    sec    | 50 
+ex.xa            | Crossing angle                       |    deg    | 0 
 -----------------+--------------------------------------+-----------+-------------
 >Target Model Parameters
 -----------------+--------------------------------------+-----------+-------------
-tgt.frameTimeStep| Target frame time step               |   sec     | 9.99e+11 
-tgt.frameStartTime| Target frame start time             |   sec     | 9.99e+11 
-tgt.weaveStart   | Target weave start time              |   sec     | 0 
-tgt.weaveEnd     | Target weave end time                |   sec     | 9.99e+11 
-tgt.weaveAmpl    | Target weave amplitude               |   gees    | 392.4 
-tgt.weavePeriod  | Target weave period                  |   sec     | 10 
+tgt.frameTimeStep| Target frame time step               |    sec    | 9.99e+11 
+tgt.initFrameTime| Target frame start time              |    sec    | 9.99e+11 
+tgt.initVxb      | Target velocity                      |   m/sec   | 270 
+tgt.weaveStart   | Target weave start time              |    sec    | 9.99e+11 
+tgt.weaveEnd     | Target weave end time                |    sec    | -1 
+tgt.weaveAmpl    | Target weave amplitude               |   gees    | 4 
+tgt.weavePeriod  | Target weave period                  |    sec    | 10 
 -----------------+--------------------------------------+-----------+-------------
 >Fire Control Radar Model Parameters
 -----------------+--------------------------------------+-----------+-------------
-fcRdr.frameTimeStep| Fire Control radar frame time step |   sec     | 0.0166667 
-fcRdr.frameStartTime| Fire Control radar frame start time|   sec    | 0 
-fcRdr.rinPosY    | Range independent position noise     |   m       | 6.86151e-315 
+fcRdr.frameTimeStep| Fire Control radar frame time step |    sec    | 0.015625 
+fcRdr.initFrameTime| Fire Control radar frame start time|    sec    | 0 
+fcRdr.initPxf    | Initial position                     |     m     | -10000 
+fcRdr.initPyf    | Initial position                     |     m     | 0 
+fcRdr.rinAng     | Range independent position noise     |    rad    | 0.0005 
+fcRdr.rinRdot    | Range independent position noise     |     m     | 3 
+fcRdr.rinRng     | Range independent position noise     |     m     | 3 
 -----------------+--------------------------------------+-----------+-------------
 >Fire Control TSE Model Parameters
 -----------------+--------------------------------------+-----------+-------------
-fcTse.frameTimeStep| Fire Control TSE frame time step   |   sec     | 0.0166667 
-fcTse.frameStartTime| Fire Control TSE frame start time |   sec     | 0 
-fcTse.procNoise  | Fire Control TSE process noise       |   sec     | 0.0001 
+fcTseO.frameTimeStep| Fire Control TSE frame time step  |    sec    | 0.015625 
+fcTseO.initFrameTime| Fire Control TSE frame start time |    sec    | 0 
+fcTseO.procNoise  | Fire Control TSE process noise      |   rad^2   | 0.0128 
 -----------------+--------------------------------------+-----------+-------------
 >Fire Control TSE6 Model Parameters
 -----------------+--------------------------------------+-----------+-------------
-fcTse6.frameTimeStep| Fire Control TSE frame time step  |   sec     | 0.0166667 
-fcTse6.singerTau| Fire Control TSE tuning parameter     |   sec     | 100 
-fcTse6.singerVar| Fire Control TSE tuning parameter     |   sec     | 100 
+fcTse6.frameTimeStep| Fire Control TSE frame time step  |    sec    | 0.015625 
+fcTse6.initFrameTime| Fire Control TSE frame start time |    sec    | 0 
+fcTse6.singerTau| Fire Control TSE tuning parameter     |    sec    | 100 
+fcTse6.singerVar| Fire Control TSE tuning parameter     |    sec    | 100 
+-----------------+--------------------------------------+-----------+-------------
+>Missile Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+msl.frameTimeStep| Missile frame time step              |    sec    | 9.99e+11 
+msl.initFrameTime| Missile frame start time             |    sec    | 9.99e+11 
+msl.initVxb      | Missile velocity                     |   m/sec   | 1000 
+msl.launchTime   | Missile launch time                  |    sec    | 30 
+-----------------+--------------------------------------+-----------+-------------
+>Seeker Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+skr.frameTimeStep| Seeker frame time step               |    sec    | 0.00555556 
+skr.initFrameTime| Seeker frame start time              |    sec    | 0 
+skr.detRng       | Seeker detection acquisition range   |     m     | 10000 
+skr.fov          | Seeker field of view / regard        |    rad    | 0.349066 
+skr.rinAng       | Seeker range independent angle noise |    rad    | 0.0002 
+-----------------+--------------------------------------+-----------+-------------
+>Projectile TSE6 Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+mslTse6.frameTimeStep| Seeker frame time step           |    sec    | 0.015625 
+mslTse6.initFrameTime| Seeker frame start time          |    sec    | 0 
+mslTse6.nextUpLinkTime| Datalink uplink interval        |    sec    | 0.015625 
+mslTse6.singerTau| Process noise uning parameter        |    na     | 0.3 
+mslTse6.singerVar| Process noise uning parameter        |    na     | 600 
+-----------------+--------------------------------------+-----------+-------------
+>Guidance Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+gdn.frameTimeStep| Guidance frame time step             |    sec    | 0.015625 
+gdn.initFrameTime| Guidance frame start time            |    sec    | 0 
+gdn.gdnLawSelInt | Guidance law selection 1=pn, 2=weave |    na     | 1 
+gdn.kpn          | Pro Nav gain                         |    na     | 3 
+gdn.tauCtrl      | Optimal guidance tuning parameter    |    sec    | 0.4 
+gdn.useTruth     | Use true target & missile state      |    na     | false 
+-----------------+--------------------------------------+-----------+-------------
+>Autopilot Model Parameters
+-----------------+--------------------------------------+-----------+-------------
+ap.frameTimeStep| Autopilot frame time step             |    sec    | 0.015625 
+ap.initFrameTime| Autopilot frame start time            |    sec    | 0 
+ap.accLim       | Acceleration limit                    |  m/sec^2  | 300 
+ap.tau          | Total autopilot, aero, CAS time const |    sec    | 0.2 
 -----------------+--------------------------------------+-----------+-------------
 
-Output is a single line of miss statistics:
-<# of runs> <min miss(m)> <max miss(m)> <mean miss(m)> <mean missX(m)> <mean missY(m)> <rms miss(m)> <std missX(m)> <std missY(m)> <# of flyers> <cep> <Pguide10 < 10cm> <Pguide10 < 20cm> <Pguide10 < 30cm> <Pguide < requiredMiss>
-
-If print_all=true for each run the following ia also printed to stdout.
-<run> <deltaV(m/s)> <miss(m)> <missX(m)> <missY(m)> <tof(s)>
+Output is a single line of run set miss statistics:
 
