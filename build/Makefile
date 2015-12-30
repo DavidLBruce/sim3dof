@@ -61,14 +61,17 @@ $(OBJ1) :	%.o: $(SRCDIR1)/%.cpp
 #
 # Create dependency files
 #
-
 %.d : $(SRCDIR1)/%.cpp
 	g++ -MM $(INC) $< -o $@		
 
 #
-# Include dependency files
+# Include dependency files, unless doing clean
 #
-include $(OBJ:.o=.d)
+ifneq ($(MAKECMDGOALS),clean)
+  include $(OBJ:.o=.d)
+endif
+
+.PHONY : clean
 
 clean :
 	rm -f *.o *.d  $(EXEPATH) $(TOPDIR)/lib/* $(RUNDIR)/core

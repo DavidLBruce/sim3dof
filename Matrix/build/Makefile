@@ -37,7 +37,9 @@ $(OBJ) :	%.o: $(SRCDIR)/%.cpp
 #
 # Include dependency files
 #
-include $(OBJ:.o=.d)
+ifneq ($(MAKECMDGOALS),clean)
+  include $(OBJ:.o=.d)
+endif
 
 tgtLib :	$(OBJ)
 		ar -r -o $(TGTLIB) $(OBJ) 
